@@ -2,16 +2,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
-
-struct dtm{
-	int y;			// year
-	unsigned int m;	//month
-	unsigned int d; // day
-	int unsigned h; // hour
-	unsigned int mi; // minute
-	unsigned int s;  // seconds
-	unsigned int a100s_of_nano_sec; // 100s_of_nano_sec seconds
-};
+#include "timestamp.h"
 
 // converts to Julian day number (less the half day offset)
 // Caller must ensure valid input
@@ -92,30 +83,4 @@ int adtime_inv(uint64_t z, struct dtm *m)
 }
 
 
-#ifdef TEST
 
-int main()
-{
-	uint64_t x;
-	uint32_t u;
-	int i;
-	
-	struct dtm g={1786, 8, 31,15,56,17,123456}, M;
-	
-	x=jd(2000,1,1);
-	
-	printf("jd = %lld\n", x);
-	u=unix_time_stamp(1970,1,1,1,5,3);
-	printf("jd = %u\n", u);
-	x=adtime(g);
-	printf("x = %lld\n", x);
-	
-	i=adtime_inv(x, &M);
-	
-	printf("\n\n%u/%u/%u  %i:%i:%i \t%u\n",M.d, M.m, M.y, M.h,M.mi,M.s,M.a100s_of_nano_sec);
-	
-	u=unix_time_stamp(2009,1,21,4,5,0);
-	printf("UTS = %u", u);
-	return 0;
-}
-#endif
