@@ -43,6 +43,7 @@ uint64_t adtime(struct dtm z)
 	return x;
 }
 
+// given an active directory timestamp in z, convert it into a UNIX dtm struct 
 int adtime_inv(uint64_t z, struct dtm *m)
 {
 	uint64_t a;

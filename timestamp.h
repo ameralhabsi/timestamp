@@ -18,5 +18,4 @@ uint32_t unix_time_stamp(int y, int m, int d, int h, int mi, int s);
 uint64_t adtime(struct dtm z);
 int adtime_inv(uint64_t z, struct dtm *m);
 
-
 #endif

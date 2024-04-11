@@ -25,5 +25,11 @@ int main()
 	
 	u=unix_time_stamp(2009,1,21,4,5,0);
 	printf("UTS = %u", u);
+
+	printf("\n\ntest 2:\n");
+	x = 133573348900000000ul;
+	adtime_inv(x, &M);
+	printf("\n\n%u/%u/%u  %i:%i:%i \t%u\n",M.d, M.m, M.y, M.h,M.mi,M.s,M.a100s_of_nano_sec);
+	//it should give the time of 2024/4/11 18:48:10 0 GMT as per https://www.epochconverter.com/ldap
 	return 0;
 }
